@@ -25,10 +25,6 @@ steps:
 - task: JfrogCli@1
   inputs:
     artifactoryService: 'ArtifactoryCloud'
-    command: 'jfrog rt c ArtifactoryCloud'
-- task: JfrogCli@1
-  inputs:
-    artifactoryService: 'ArtifactoryCloud'
     command: 'jfrog rt pip-config'
 - task: JfrogCli@1
   inputs:
