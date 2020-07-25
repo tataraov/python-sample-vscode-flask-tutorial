@@ -18,6 +18,18 @@ strategy:
       python.version: '3.6'
 
 steps:
+- task: ArtifactoryToolsInstaller@1
+  inputs:
+    artifactoryService: 'ArtifactoryCloud'
+    cliInstallationRepo: 'tata-cli'
+- task: JfrogCli@1
+  inputs:
+    artifactoryService: 'ArtifactoryCloud'
+    command: 'jfrog rt pip-config --server-id-resolve=ArtifactoryCloud --repo-resolve=pypi'
+- task: JfrogCli@1
+  inputs:
+    artifactoryService: 'ArtifactoryCloud'
+    command: 'jfrog rt pip-install . --build-name=my-build --build-number=1'
 - task: UsePythonVersion@0
   inputs:
     versionSpec: '$(python.version)'
